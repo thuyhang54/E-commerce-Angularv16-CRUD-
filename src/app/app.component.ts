@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myapp';
+  show(html:any){
+    document.getElementById('prod')!.innerHTML =html;
+  }
 }
