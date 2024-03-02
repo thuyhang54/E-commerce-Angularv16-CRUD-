@@ -11,7 +11,6 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { ShirtComponent } from './shirt/shirt.component';
@@ -20,6 +19,10 @@ import { DressComponent } from './dress/dress.component';
 import { SearchService } from './search.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { StarComponent } from './product-list/star/star.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { RegisterComponent } from './Auth/register/register.component';
+//
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +32,15 @@ import { StarComponent } from './product-list/star/star.component';
     ProductDetailsComponent,
     ProductsComponent,
     CartComponent,
-    LoginComponent,
     ShirtComponent,
     PantsComponent,
     DressComponent,
     ProductListComponent,
-    StarComponent
+    StarComponent,
+    LoginComponent,
+    RegisterComponent,
+   
+ 
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,7 @@ import { StarComponent } from './product-list/star/star.component';
       preventDuplicates: true,
     }),
     ReactiveFormsModule,
+    NgxPaginationModule
 
     
   ],

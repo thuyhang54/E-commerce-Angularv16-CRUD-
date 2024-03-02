@@ -31,8 +31,7 @@
 				<!-- Cart -->
 				<ul class="top-menu text-right list-inline">
 					<li class="dropdown cart-nav dropdown-slide">
-						<a href="#!" class="" data-toggle="modal" data-target="#modelId"><i
-								class="tf-ion-android-cart"></i>Cart <span class="badge badge-light">{{
+						<a href="#!" class="" data-toggle="modal" data-target="#modelId"><i class="tf-ion-android-cart"></i>Cart <span class="badge badge-light">{{
 								ItemCount()}}</span></a>
 						<div class="dropdown-menu cart-dropdown">
 							<!-- Cart Item -->
@@ -105,16 +104,17 @@
 					</div>
 					<!-- / Search -->
 
-					<!-- Languages -->
-					<li class="commonSelect">
-						<select class="form-control">
-							<option>EN</option>
-							<option>DE</option>
-							<option>FR</option>
-							<option>ES</option>
-						</select>
+					<!-- Login -->
+					<li class="text-danger">
+						<ng-container *ngIf="!isAuthenticated()">
+							<div style="cursor: pointer;" class="" routerLink="/login"><i class="tf-ion-log-in"></i> Login</div>
+							<!-- <div style="cursor: pointer;" class="" routerLink="/signup"><i class="tf-ion-log-in"></i>Sign up</div> -->
+						</ng-container>
+						<ng-container *ngIf="isAuthenticated()">
+							<div style="cursor: pointer;" class="" (click)="logOut()" ><i class="tf-ion-log-out"></i> Logout</div>
+						</ng-container>
 					</li>
-					<!-- / Languages -->
+					<!-- / Login -->
 
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>

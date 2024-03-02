@@ -10,4 +10,5 @@ export class AppComponent {
   show(html:any){
     document.getElementById('prod')!.innerHTML =html;
   }
+
 }

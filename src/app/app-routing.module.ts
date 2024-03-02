@@ -3,16 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Auth/login/login.component';
 import { ShirtComponent } from './shirt/shirt.component';
 import { PantsComponent } from './pants/pants.component';
 import { DressComponent } from './dress/dress.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { RegisterComponent } from './Auth/register/register.component';
 const routes: Routes = [
   {path: '', component: HomeComponent, title: 'Home'},
   {path:'cart/:id',component: CartComponent, title: 'Cart Details'},
   { path: 'product-details/:id',component: ProductDetailsComponent, title: 'Product Details' },
-  // {path: 'login', component: LoginComponent, title: 'Login'},
+  {path: 'login', component: LoginComponent, title: 'Login'},
+  {path: 'signup', component: RegisterComponent, title: 'Sign Up'},
   { path: 'shirt/:id', component: ShirtComponent },
   { path: 'pants/:id', component: PantsComponent },
   { path: 'dress/:id', component: DressComponent },

@@ -64,5 +64,28 @@ this.prod.Updateproduct(this.id , this.formProduct.value, this.file)
 if (confirm('You have want delete?'))
 this.prod.DeleteProduct(index)
   }
-
+  // pagination
+  page:number=1;
+  count: number =0;
+  tableSize: number= 6;
+  // tableSizes: any = [3,6,9,12];
+ ngOnInit(): void {
+  this.getAllProducts();
+  
+ }
+ getAllProducts(): void{
+  this.prod.getProduct()
+ }
+ onTableDatTaChange(event : any){
+  this.page = event;
+  this.getAllProducts();
+ }
+//  onTableSizeChange(event : any): void{
+//   this.tableSize = event.target.value;
+//   this.page = 1;
+//   this.getAllProducts();
+//  }
+   
+  
+  
 }

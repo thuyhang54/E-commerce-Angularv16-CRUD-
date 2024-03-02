@@ -8,6 +8,7 @@ import { CategoryService } from '../category.service';
 import { Category, Subcategory } from '../category'; 
 import { SearchService } from '../search.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../Auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   categories: Category[] =[];
   filteredProductList: Product[] = [];
   private searchSubscription: Subscription | undefined; // Thêm một thuộc tính subscription
-  constructor(private router: ActivatedRoute, public productService: ProductService, private cartService: CartService,private categoryService: CategoryService, public searchService: SearchService ) {
+  constructor(private router: ActivatedRoute, public productService: ProductService, private cartService: CartService,private categoryService: CategoryService,private authService: AuthService, public searchService: SearchService ) {
     this.cartList = cartService.getCartAll();
   }
   ngOnInit(): void {
@@ -55,5 +56,13 @@ export class HeaderComponent implements OnInit {
     // filterResults() {
     //   this.searchService.setKeywords(this.searchService.searchKeywords$)
     // }
+    isAuthenticated(){
+      return this.authService.isAuthenticated;
+    }
+    logOut(){
+    
+      this.authService.LogOut();
+    }
+    
 
 }
