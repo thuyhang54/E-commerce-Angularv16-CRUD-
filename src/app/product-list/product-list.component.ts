@@ -8,7 +8,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  @Input() productList: Product[] = [];
+   productList: Product[] = [];
   showRating(event: any) {
     alert(`${event}`);
   }
@@ -27,16 +27,24 @@ export class ProductListComponent {
   IsUpdate: number = 0
   constructor(private prod : ProductService ){
     this.productList = prod.getProduct();
-    this.filterProductList =this.productList;
   }
+
+  searching: string = "";
   filterProductList:Product[] =[]
-searching: string = ""
-filterResults(){
-    if(!this.searching){
-      this.filterProductList =this.productList
+  filterResults(){
+    if (this.searching.trim() == '') {
+      this.filterProductList = this.productList;
+    } else {
+      this.filterProductList = this.productList.filter(
+        list => list?.productName.toLowerCase().includes(this.searching.toLowerCase())
+      );
     }
-    this.filterProductList= this.productList.filter(list => list?.productName.toLowerCase().includes(this.searching.toLowerCase()))
-}
+
+// Cập nhật trang hiện tại để hiển thị kết quả lọc
+  this.page = 1;
+  this.getAllProducts();
+  }
+
   onChange(event : any){
     var str = event.target.files[0].name
     this.file= './assets/images/shop/products'+ str
@@ -69,12 +77,25 @@ this.prod.DeleteProduct(index)
   count: number =0;
   tableSize: number= 6;
   // tableSizes: any = [3,6,9,12];
+   // end paginationn
+
+
+
  ngOnInit(): void {
   this.getAllProducts();
   
  }
  getAllProducts(): void{
-  this.prod.getProduct()
+  // Nếu có tìm kiếm, sử dụng danh sách đã lọc
+  const productsToShow = this.searching ? this.filterProductList : this.productList;
+  // Tính toán số lượng trang 
+  this.count = productsToShow.length;
+  // Lấy chỉ mục bắt đầu và kích thước trang
+  const startIndex = (this.page - 1) * this.tableSize;
+  const endIndex = startIndex + this.tableSize;
+  // Cập nhật danh sách sản phẩm để hiển thị trên trang hiện tại
+  this.productList =productsToShow.slice(startIndex,endIndex);
+
  }
  onTableDatTaChange(event : any){
   this.page = event;

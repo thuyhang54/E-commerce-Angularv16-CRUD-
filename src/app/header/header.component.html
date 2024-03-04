@@ -87,21 +87,18 @@
 						<ul class="dropdown-menu search-dropdown">
 							<li>
 								<form action="post">
-									<input type="search"  [(ngModel)]="searchService.searchKeywords$" class="form-control"
-										placeholder="Search...">
-								</form>
+									<input type="search" [(ngModel)]="searching" (ngModelChange)="filterResults()" class="form-control" placeholder="Search..." name="searchInput">
+								  </form>
+								  
 							</li>
 						</ul>
 					</li>
 					<!-- Hiển thị sản phẩm đã lọc -->
-					<div *ngIf="filteredProductList.length > 0">
-						<ul>
-							<li *ngFor="let product of filteredProductList">
-								<!-- Hiển thị từng sản phẩm -->
-								{{ product.productName }}
-							</li>
-						</ul>
-					</div>
+					<!-- <div *ngFor="let product of filteredProductList"> -->
+						<!-- Hiển thị thông tin sản phẩm -->
+						<!-- <p>{{ product.productName }}</p>
+					  </div> -->
+					
 					<!-- / Search -->
 
 					<!-- Login -->
@@ -176,3 +173,4 @@
 		</div><!-- / .container -->
 	</nav>
 </section>
+<!-- <app-products [productHome]="filteredProductList"></app-products> -->

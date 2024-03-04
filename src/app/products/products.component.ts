@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../product';
-import { SearchService } from '../search.service';
+
 
 
 @Component({

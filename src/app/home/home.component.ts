@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { SearchService } from '../search.service';
@@ -8,16 +8,18 @@ import { SearchService } from '../search.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-   
-    products: Product[] = [];
+   // (cha)Nhận Output() sau đó thực hiện bước lắng nghe sự kiện từ HeaderComponent 
+   //và nhận danh sách sản phẩm đã lọc
+  filteredProducts: Product[] = [];
+  // products : Product[] = [];
+    
+   receiveFilteredProducts(filteredProducts: Product[]) {
+    this.filteredProducts = filteredProducts;
+  }
 constructor(private productService: ProductService,private searchService: SearchService ){
-  this.products=productService.getProduct();
-  
+  this.filteredProducts=productService.getProduct();
 }
 
-// ngOnInit(): void {
-//   this.products =this.productService.getProduct();
-//  }
 
 
 
