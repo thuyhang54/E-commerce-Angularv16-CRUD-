@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, public productService: ProductService, private cartService: CartService,private categoryService: CategoryService,private authService: AuthService ) {
     this.cartList = cartService.getCartAll();
-    this.products = productService.getProduct();
+    // this.products = productService.getProduct();
     this.filteredProductList = this.products;
   }
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     }else{
       this.filteredProductList =this.products.filter
       (
-        list => list?.productName!.toLowerCase().includes(this.searching!.toLowerCase())
+        list => list?.title!.toLowerCase().includes(this.searching!.toLowerCase())
         );
     }
     console.log('Filtered Products:', this.filteredProductList);

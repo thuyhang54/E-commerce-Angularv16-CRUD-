@@ -12,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
+  showRating(event: any) {
+    alert(`${event}`);
+  }
   productDetail: Product | undefined;
   cartList: Cart[] = [];
   InStock: number = 0;
@@ -30,9 +33,10 @@ isQuantityValid: boolean = true;
   }
   // ... (các phương thức khác của bạn)
 
-  setInitialSize(): void {
-    this.selectedSize = this.productDetail?.productSize[0] || null;
-  }
+  // setInitialSize(): void {
+  //   this.selectedSize = this.productDetail?.productSize[0] || null;
+  // }
+  
   constructor(
     private router: ActivatedRoute,
     private productService: ProductService,
@@ -40,34 +44,37 @@ isQuantityValid: boolean = true;
     private toastr: ToastrService
   ) {
     this.cartList = cartService.getCartAll();
+    
   }
   ngOnInit(): void {
     let id = Number(this.router.snapshot.params['id']);
-    this.productDetail = this.productService.getProductId(id);
-    this.InStock = this.productDetail?.inStock!;
+    this.productService.getProductId(id).subscribe(data=>{
+      this.productDetail = data;
+      this.InStock = this.productDetail?.stock!;
+    })
+   
+   
   }
   Add() {
     // Kiểm tra điều kiện ràng buộc số lượng
-    if (this.selectedSize && this.selectedColor && this.quantity > 0) {
+    if(this.quantity > 0){
+      // Kiểm tra số lượng có lớn hơn tồn hàng không
+      if(this.quantity > this.InStock){
+        alert('Quantity cannot be greater than the quantity in stock')
+        return ;
+      }
+      // Giảm số lượng tồn hàng
+      this.InStock -= this.quantity;
+
+      //// Thêm vào giỏ hàng
       this.cartService.addCart(
-        this.productDetail?.productId!,
+        this.productDetail!.id!,
         this.productDetail!,
-        this.selectedSize,
-        this.selectedColor,
         this.quantity
       );
-    
-      
-      this.InStock = this.cartService.getInStock(
-        this.productDetail?.productId!
-      )!;
-      // Hiển thị toast thông báo thành công
-      alert('Add Success');
-    
-    }  else {
-    
-      // Hiển thị toast thông báo lỗi
-      alert('Choose color and size, please');
+      alert('Successfully added to cart');
+    }else{
+      alert('Please select a valid quantity.');
     }
   }
 

@@ -28,8 +28,10 @@ export class CartComponent {
   }
   ngOnInit(): void {
     let id = Number(this.router.snapshot.params['id']);
-    this.productDetail = this.productService.getProductId(id);
-    this.InStock = this.productDetail?.inStock!;
+ this.productService.getProductId(id).subscribe(data=>{
+  this.productDetail = data;
+    })
+    this.InStock = this.productDetail?.stock!;
   }
   // Add() {
   //   if (this.selectedSize && this.selectedColor && this.quantity) {
@@ -38,6 +40,12 @@ export class CartComponent {
   //       this.InStock = this.cartService.getInStock(this.productDetail?.productId! )!;
   //   }
   // }
+
+  Add() {
+    this.cartService.addCart(this.productDetail?.id!, this.productDetail, this.quantity);
+    this.InStock = this.cartService.getInStock(this.productDetail?.id!)!;
+  }
+
   ItemCount() {
     return this.cartService.totalItems();
   }

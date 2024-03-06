@@ -30,76 +30,71 @@
 		<div class="row mt-20">
 			<div class="col-md-5">
 				<div class="single-product-slider">
+					
 					<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
 						<div class='carousel-outer'>
-							<!-- me art lab slider -->
-							<div class='carousel-inner '>
-								<div class='item active'>
-									<img [src]='productDetail?.imageUrl' alt=''
-										[attr.data-zoom-image]="productDetail?.imageUrl" />
-								</div>
-								<div class='item'>
-									<img [src]='productDetail?.imageUrl' alt=''
-										[attr.data-zoom-image]="productDetail?.imageUrl" />
-								</div>
-
-
+						  <!-- me art lab slider -->
+						  <div class='carousel-inner'>
+							<div class='item' *ngFor='let image of productDetail?.images; let i = index;' [class.active]="i === 0">
+							  <img [src]='image' alt='' [attr.data-zoom-image]="image" />
 							</div>
-
-							<!-- sag sol -->
-							<a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-								<i class="tf-ion-ios-arrow-left"></i>
-							</a>
-							<a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-								<i class="tf-ion-ios-arrow-right"></i>
-							</a>
+						  </div>
+					  
+						  <!-- sag sol -->
+						  <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+							<i class="tf-ion-ios-arrow-left"></i>
+						  </a>
+						  <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+							<i class="tf-ion-ios-arrow-right"></i>
+						  </a>
 						</div>
-
+					  
 						<!-- thumb -->
 						<ol class='carousel-indicators mCustomScrollbar meartlab'>
-							<li data-target='#carousel-custom' data-slide-to='0' class='active'>
-								<img [src]='productDetail?.imageUrl' alt=''
-									[attr.data-zoom-image]="productDetail?.imageUrl" />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='1'>
-								<img [src]='productDetail?.imageUrl' alt=''
-									[attr.data-zoom-image]="productDetail?.imageUrl" />
-							</li>
+						  <li *ngFor='let image of productDetail?.images; let i = index;' data-target='#carousel-custom' [attr.data-slide-to]="i"
+							  [class.active]="i === 0">
+							<img [src]='image' alt='' [attr.data-zoom-image]="image" />
+						  </li>
 						</ol>
-					</div>
+					  </div>
+					  
+					  
 				</div>
 			</div>
 			<div class="col-md-7">
 				<div class="single-product-details">
-					<h2>{{productDetail?.productName}}</h2>
+					<p>Mã: {{productDetail?.id}}</p>
+					<h2>{{productDetail?.title}}</h2>
+					<app-star-rating [Rating]="productDetail!.rating"></app-star-rating>
+					
 					<p>Kho: {{InStock}}</p>
-					<p>Mã: {{productDetail?.productCode}}</p>
+					
 					<h3 class="product-price">Giá: {{productDetail?.price| currency:'':''}} VND</h3>
 
 					<p class="product-description mt-20">
 						Mô tả: {{ productDetail?.description}}
 					</p>
-					<div class="product-size color-swatches">
+					<!-- <div class="product-size color-swatches">
 						<span>Color: {{ selectedColor }}</span>
 						<select class="form-control" [(ngModel)]="selectedColor" (change)="selectColor($event)">
 
 							<option *ngFor="let color of productDetail?.productColor" [value]="color">{{color}}</option>
 
 						</select>
-					</div>
-					<div class="product-size">
+					</div> -->
+					<!-- <div class="product-size">
 						<span>Size: {{ selectedSize }}</span>
 						<select class="form-control" [(ngModel)]="selectedSize" (change)="selectSize($event)">
 
 							<option *ngFor="let size of productDetail?.productSize" [value]="size">{{size}}</option>
 
 						</select>
-					</div>
+					</div> -->
 					<div class="product-quantity">
 						<span>Số lượng:</span>
 						<div class="product-quantity-slider">
 							<input id="product-quantity" type="text" name="product-quantity" [(ngModel)]="quantity"
-								(ngModelChange)="checkQuantity()" [class.invalid]="!isQuantityValid" />
+								(input)="checkQuantity()" [class.invalid]="!isQuantityValid" />
 							<!-- Hiển thị thông báo lỗi khi số lượng không hợp lệ -->
 							<div *ngIf="!isQuantityValid" class="error-message">
 								Please enter a valid quantity.

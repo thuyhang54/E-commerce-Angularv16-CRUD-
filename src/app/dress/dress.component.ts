@@ -12,11 +12,11 @@ export class DressComponent {
   productsByCategory: Product[] = [];
   constructor( private router: ActivatedRoute, private productService: ProductService){
     let id = Number(this.router.snapshot.params['id']);
-    this.productsByCategory =this.productService.getProductByIdCategory(id);
+    // this.productsByCategory =this.productService.getProductByIdCategory(id);
   }
     ngOnInit(): void {
      let id = Number(this.router.snapshot.params['id']);
-     this.productsByCategory =this.productService.getProductByIdCategory(id);
+    //  this.productsByCategory =this.productService.getProductByIdCategory(id);
 
     }
      // (cha)Nhận Output() sau đó thực hiện bước lắng nghe sự kiện từ HeaderComponent 

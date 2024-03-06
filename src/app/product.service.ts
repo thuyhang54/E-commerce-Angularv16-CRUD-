@@ -1,190 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
-
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.getProduct().subscribe((res) =>{
+      this.products = res;
+    })
+   }
   products: Product[] =[
-  {
-    productId: 1,
-    productCategory: 1,
-    productName: 'Reef Boardsport',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen', 'Trắng'],
-    productCode: 'SH-001',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 200,
-    inStock: 20,
-    starRating: 3.2,
-    imageUrl: 
-      'assets/images/shop/products/product-1.jpg', 
-     
-  
-  },
-  {
-    productId: 2,
-    productCategory: 1,
-    productName: 'Rainbow Shoes',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'SH-002',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 200,
-    inStock: 20,
-    starRating: 4.2,
-    imageUrl: 
-      'assets/images/shop/products/product-2.jpg',
-     
-  
-  },
-  {
-    productId: 3,
-    productCategory: 3,
-    productName: 'Strayhorn SP',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'DR-001',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 230,
-    inStock: 20,
-    starRating: 3.5,
-    imageUrl: 
-      'assets/images/shop/products/product-3.jpg',
-      
-  
-  },
-  {
-    productId: 4,
-    productCategory: 1,
-    productName: 'Bradley Mid',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'SH-003',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 245,
-    inStock: 20,
-    starRating: 4.0,
-    imageUrl: 
-      'assets/images/shop/products/product-4.jpg',
-  
-  },
-  {
-    productId: 5,
-    productCategory: 2,
-    productName: 'Rainbow Shoes',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'PT-001',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 370,
-    inStock: 20,
-    starRating: 5.0,
-    imageUrl: 'assets/images/shop/products/product-5.jpg'
-  },
-  {
-    productId: 6,
-    productCategory: 1,
-    productName: 'Reef Boardsport',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'SH-004',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 600,
-    inStock: 20,
-    starRating: 3.5,
-    imageUrl: 'assets/images/shop/products/product-6.jpg'
-  },
-  {
-    productId: 7,
-    productCategory: 3,
-    productName: 'Reef Boardsport',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'DR-002',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 400,
-    inStock: 20,
-    starRating: 3.8,
-    imageUrl: './assets/images/shop/products/product-7.jpg'
-  },
-  {
-    productId: 8,
-    productCategory: 1,
-    productName: 'Reef Boardsport',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen'],
-    productCode: 'SH-005',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 500,
-    inStock: 20,
-    starRating: 4.5,
-    imageUrl: 'assets/images/shop/products/product-8.jpg'
-  },
-  {
-    productId: 9,
-    productCategory: 3,
-    productName: 'Reef Boardsport',
-    productSize: ['S' , 'M', 'L', 'XL'],
-    productColor: ['Đen', 'Trắng'],
-    productCode: 'DR-003',
-    releaseDate: 'March 19, 2016',
-    description: 'Leaf rake with 48-inch wooden handle.',
-    price: 300,
-    inStock: 20,
-    starRating: 4.3,
-    imageUrl:'assets/images/shop/products/product-9.jpg'
-  },
+ 
   ];
   // Auto increment id
-  AutoId(): number {
+  AutoId() {
     var max = 1;
-    this.products.forEach(function (item) {
-      if (item.productId > max) max = item.productId;
+    this.products.forEach((item) => {
+      if (item.id > max) max = item.id;
     });
     return max + 1;
   }
+  private baseURL = `http://localhost:3000/products`;
   // Get Product
-  getProduct(){
-    return this.products;
+  getProduct(): Observable<Product[]>{
+   return this.http.get<Product[]>(`${this.baseURL}`);
   }
   // Get Product  by Id
-  getProductId(id: number): any{
-    return this.products.find((product)=> product.productId === id);
-  }
-  getProductByIdCategory(iddm :number) : any{
-    const listProdcuts=this.products.filter((p) => p.productCategory === iddm );
-    return listProdcuts ;
-  }
+  getProductId(id: number) {
+    return  this.http.get<Product>(`${this.baseURL}/${id}`)
+    }
+    searchId(id:number){
+      return this.products.find(item=> item.id === id)
+    }
+  // getProductByIdCategory(iddm :number) : any{
+  //   const listProdcuts=this.products.filter((p) => p.productCategory === iddm );
+  //   return listProdcuts ;
+  // }
  
-  AddProduct(frmProduct: any, fileImg: string) {
-    let id = this.products.push(frmProduct) - 1;
-    this.products[id].imageUrl = fileImg;
-    console.log(this.products);
+  AddProduct(frmProduct: any): Observable<Product[]> {
+    return this.http.post<Product[]>(`${this.baseURL}`, frmProduct);
   }
-  EditProduct(id: number) {
-    return this.products[id];
+  // EditProduct(id: number) {
+  //   return this.products[id];
+  // }
+  Updateproduct(id: number, frmProduct: any): Observable<Product[]> {
+    return this.http.put<Product[]>(`${this.baseURL}/${id}`, frmProduct);
   }
-  Updateproduct(id: number, frmProduct: any , fileImg: string){
- this.products[id].productName = frmProduct.productName
- this.products[id].productCode= frmProduct.productCode
- this.products[id].releaseDate = frmProduct.releaseDate
- this.products[id].description = frmProduct.description
- this.products[id].price = frmProduct.price
- this.products[id].imageUrl = fileImg
-  }
-  DeleteProduct(id: number) {
-    this.products.splice(id, 1);
+  DeleteProduct(id: number): Observable<Product[]>  {
+    return this.http.delete<Product[]>(`${this.baseURL}/${id}`);
   }
 }

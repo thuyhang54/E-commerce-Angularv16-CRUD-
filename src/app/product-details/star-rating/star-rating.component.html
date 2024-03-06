@@ -1,0 +1,9 @@
+<!-- Trong template của StarComponent (star.component.html) -->
+<div class="crop" [style.width.px]="starWidth">
+    <div style="width: 90px;">
+    <span style="margin-right: 5px;">{{Rating}}</span>
+      <span style="font-size: 23px;" *ngFor="let i of [1, 2, 3, 4, 5]" class="tf-ion-android-star" [class.filled]="i <= Rating"></span>
+      
+    </div>
+  </div>
+  

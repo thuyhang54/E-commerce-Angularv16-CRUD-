@@ -25,32 +25,35 @@
                     <th>Image</th>
                     <th>Code</th>
                     <th>Product</th>
-                    <th>Code Category</th>
-                    <th>Size</th>
-                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <!-- <th>Code Category</th> -->
+                    <!-- <th>Size</th>
+                    <th>Color</th> -->
                     <th>Instock</th>
-                    <th>Available</th>
-                    <th>Price </th>
-                    <th>5 Star Rating</th>
+                    <th>Description</th>
+                    <!-- <th>Available</th> -->
+                    <th>Rating</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr
                     *ngFor="let item of productList | paginate : { itemsPerPage: tableSize, currentPage: page, totalItems: count } ; let i = index">
-                    <td scope="row"><img src="{{item.imageUrl}}" width="50px" alt="" srcset=""></td>
-                    <td>{{item.productCode}}</td>
+                    <td scope="row"><img src="{{item.thumbnail}}" width="50px" alt="" srcset=""></td>
+                    <td>{{item.id}}</td>
                     <td><a style="text-decoration: underline; color: rgb(136, 133, 131);"
-                            routerLink="/product-details/{{item.productId}}">{{item.productName}}</a> </td>
-                    <td>{{item.productCategory}}</td>
-                    <td>{{item.productSize}}</td>
-                    <td>{{item.productColor}}</td>
-                    <td>{{item.inStock}}</td>
-
-                    <td>{{item.releaseDate}}</td>
-                    <td>{{item.price}}</td>
+                            routerLink="/product-details/{{item.id}}">{{item.title}}</a> </td>
+                    <!-- <td>{{item.productCategory}}</td> -->
+                    <!-- <td>{{item.productSize}}</td>
+                    <td>{{item.productColor}}</td> -->
+                    <td>{{item.price | currency:'':''}}VND</td>
+                    <td>{{item.discountPercentage}}%</td>
+                    <td>{{item.stock}}</td>
+                    <td>{{item.description}}</td>
+                    <!-- <td>{{item.releaseDate}}</td> -->
                     <td>
-                        <app-star [Rating]="item.starRating" [nameRating]="item.productName"
+                        <app-star [Rating]="item.rating" [nameRating]="item.title"
                             (outRating)="showRating($event)"></app-star>
                     </td>
                     <td>
@@ -85,27 +88,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">ProductName</label>
-                                    <input type="text" [formControl]="formProduct.controls.productName" name="" id=""
+                                    <input type="text" [formControl]="formProduct.controls.title" name="" id=""
                                         class="form-control" placeholder="" aria-describedby="helpId">
                                     <!--<smallid="helpId"class="text-muted">Helptext</small>-->
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">ProductCode</label>
                                     <input type="text" [formControl]="formProduct.controls.productCode" name="" id=""
                                         class="form-control " placeholder="" aria-describedby="helpId">
-                                    <!--<smallid="helpId"class="text-muted">Helptext</small>-->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                                    
+                                </div> 
+                            </div> -->
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Date</label>
                                     <input type="date" [formControl]="formProduct.controls.releaseDate" name="" id=""
                                         class="form-control" placeholder="" aria-describedby="helpId">
-                                    <!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                                    
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Price</label>
@@ -114,22 +117,39 @@
                                     <!--<smallid="helpId"class="text-muted">Helptext</small>-->
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Discount Percentage</label>
+                                    <input type="number" [formControl]="formProduct.controls.discountPercentage" name="" id=""
+                                        class="form-control" placeholder="" aria-describedby="helpId">
+                                    <!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">description</label>
+                                    <label for="">Description</label>
                                     <input type="text" [formControl]="formProduct.controls.description" name="" id=""
+                                        class="form-control" placeholder="" aria-describedby="helpId">
+                                    <!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Stock</label>
+                                    <input type="text" [formControl]="formProduct.controls.stock" name="" id=""
                                         class="form-control" placeholder="" aria-describedby="helpId">
                                     <!--<smallid="helpId"class="text-muted">Helptext</small>-->
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">picture</label>
-                                    <input type="file" [formControl]="formProduct.controls.imageUrl"
+                                    <label for="">Picture</label>
+                                    <input type="file" [formControl]="formProduct.controls.thumbnail"
                                         (change)="onChange($event)" name="" id="" class="form-control" placeholder=""
                                         aria-describedby="helpId">
                                     <!--<smallid="helpId"class="text-muted">Helptext</small>-->
                                 </div>
+                                <input type="text" [formControl]="formProduct.controls.thumbnail">
                             </div>
                             <div class="col-md-6">
                                 <img [src]="file" width="20%" alt="">

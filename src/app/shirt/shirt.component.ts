@@ -13,6 +13,6 @@ export class ShirtComponent implements OnInit {
 constructor( private router: ActivatedRoute, private productService: ProductService){}
   ngOnInit(): void {
    let id = Number(this.router.snapshot.params['id']);
-   this.productsByCategory =this.productService.getProductByIdCategory(id);
+  //  this.productsByCategory =this.productService.getProductByIdCategory(id);
   }
 }

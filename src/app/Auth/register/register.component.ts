@@ -9,7 +9,11 @@ import { RegisterForm } from '../auth';
 export class RegisterComponent {
  registerForm: RegisterForm = { email: '', password:'', comfirm_password:''}
  constructor(private authService: AuthService){}
- onSubmit(){
-  this.authService.Register(this.registerForm);
+ onSubmit() : void{
+  if(this.registerForm.password !== this.registerForm.comfirm_password){
+    alert('Mật khẩu không khớp với mật khẩu xác nhận. Vui lòng nhập lại.');
+    return;
+  }
+  this.authService.register(this.registerForm);
  }
 }
