@@ -1,22 +1,34 @@
 <div class="container">
 
-    <div class="col-md-6 ">
+   <div class="row">
+    <div class="col-md-5 ">
         <!-- Modal trigger button -->
         <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modelId">
             Add new
         </button>
     </div>
-
-    <div class="col-md-6 ">
-        <form class="form-inline">
-            <div class="form-group">
-                <!--<label for="">Tìm sản phẩm</label> -->
-                <input type="text" style="min-width: 470px; margin-bottom: 12px;" [(ngModel)]="searching"
-                    (ngModelChange)="filterResults()" name="searching" id="" class="form-control" placeholder=""
-                    placeholder="Tìm sản phẩm" mall>
+   </div>
+   
+    <div class="row">
+        <div class="col-md-2 ">
+            <div class="form-inline ">
+              <label for="">Sắp xếp:</label>
+              <select class="form-control" name="" id="" [(ngModel)]="selectedSortOption" (change)="onChangeSort()">
+                <option value="1">Tăng dần theo giá</option>
+                <option value="-1">Giảm dần theo giá</option>
+              </select>
             </div>
-        </form>
+         </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for=""></label>
+            <input type="text" style="margin-bottom: 12px;" [(ngModel)]="searching"
+            (ngModelChange)="filterResults()" name="searching" id="" class="form-control" placeholder=""
+            placeholder="Tìm sản phẩm" mall>
+        </div>
     </div>
+</div>
 
     <div class="row mt-3 pl-3 pr-3">
         <table class="parent table table-bordered">
@@ -39,7 +51,9 @@
             </thead>
             <tbody>
                 <tr
-                    *ngFor="let item of productList | paginate : { itemsPerPage: tableSize, currentPage: page, totalItems: count } ; let i = index">
+                    *ngFor="let item of productList  | paginate : { itemsPerPage: tableSize, currentPage: page, totalItems: count } ; let i = index"
+                    [class.editing-row]="i === editingIndex"
+                    >
                     <td scope="row"><img src="{{item.thumbnail}}" width="50px" alt="" srcset=""></td>
                     <td>{{item.id}}</td>
                     <td><a style="text-decoration: underline; color: rgb(136, 133, 131);"
@@ -78,7 +92,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Product</h5>
+                    <h5 class="modal-title" *ngIf="IsAdd==1">Add Product</h5>
+                    <h5 class="modal-title" *ngIf="IsUpdate==2">Update Product</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -93,22 +108,7 @@
                                     <!--<smallid="helpId"class="text-muted">Helptext</small>-->
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">ProductCode</label>
-                                    <input type="text" [formControl]="formProduct.controls.productCode" name="" id=""
-                                        class="form-control " placeholder="" aria-describedby="helpId">
-                                    
-                                </div> 
-                            </div> -->
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Date</label>
-                                    <input type="date" [formControl]="formProduct.controls.releaseDate" name="" id=""
-                                        class="form-control" placeholder="" aria-describedby="helpId">
-                                    
-                                </div>
-                            </div> -->
+                         
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Price</label>
@@ -160,8 +160,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" *ngIf="IsAdd==1" (click)="Add()">Save</button>
                     <button type="button" class="btn btn-primary" *ngIf="IsUpdate==2" (click)="Update()">Save 1</button>
-                    <button type="button" class="btn btn-secondary" (click)="IsAdd=1; IsUpdate=0"
-                        dataismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" id="closeButton" (click)="IsAdd=1; IsUpdate=0" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -175,5 +174,9 @@
         margin-top: 10px;
         font-size: 18px;  
     }
+.editing-row {
+  background-color: #dff0d8; /* hoặc bất kỳ màu nào khác để làm nổi bật */
+}
+
     
 </style>
