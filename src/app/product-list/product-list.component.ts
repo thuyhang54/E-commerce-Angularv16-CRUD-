@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { Product } from '../product';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ProductService } from '../product.service';
@@ -9,6 +9,7 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+
   productList: Product[] = [];
   showRating(event: any) {
     alert(`${event}`);
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit {
   formProduct = new FormGroup({
     title: new FormControl<string>(''),
     // productCode: new FormControl<string>(''),
-    // releaseDate: new FormControl<string>(''),
+    releaseDate: new FormControl<string>(''),
     price: new FormControl<number>(0),
     discountPercentage: new FormControl<number>(0),
     stock: new FormControl<number>(0),
@@ -48,14 +49,15 @@ export class ProductListComponent implements OnInit {
   filterResults() {
     if (this.searching.trim() === '') {
       this.ngOnInit();
+     
     } else  {
       this.filterProductList = this.productList.filter((product) =>
-        product?.title.toLowerCase().includes(this.searching.toLowerCase())
-      );
-      
-    }
+      product?.title && this.searching &&
+      product.title.toLowerCase().includes(this.searching.toLowerCase())
+    );
     
-  
+      console.log(this.filterProductList); 
+    }
   }
  
 
@@ -70,23 +72,42 @@ export class ProductListComponent implements OnInit {
     this.formProduct.controls['thumbnail'].setValue(this.file);
     this.prod.AddProduct(this.formProduct.value).subscribe((result) => {
       console.log(result);
-      this.ngOnInit();
-      alert("Add success!");
   
-    // Reset giá trị trong form
-    this.formProduct.reset();
-    this.formProduct.controls['thumbnail'].setValue('');
-    this.formProduct.controls['thumbnailFile'].setValue(null);
-    this.file= '';
+     // Cập nhật danh sách sản phẩm và sắp xếp nó theo sản phẩm vừa thêm
+    this.prod.getProduct().subscribe((products) => {
+      // Giả sử 'createdAt' là thuộc tính chỉ định ngày tạo
+      products.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
 
-    // Close modal after add success
-    const closeButton = document.getElementById('closeButton');
-    if (closeButton) {
-      closeButton.click();
-    }
+       // Đánh dấu sản phẩm mới
+       const newAddedProduct = products.find((product) => product.id === product.id);
+       if (newAddedProduct) {
+        newAddedProduct!.isNewlyAdded = true;
+      // Ẩn màu nền sau 3 giây
+      setTimeout(() => {
+        newAddedProduct.isNewlyAdded = false;
+      }, 3000);
+    }     
+      // Cập nhật danh sách sản phẩm (giả sử 'productsList' là mảng chứa sản phẩm)
+      this.productList = products;
+    })
+
+    console.log(this.productList);
+      alert("Thêm thành công!");
+  
+      // Đặt lại giá trị trong biểu mẫu
+      this.formProduct.reset();
+      this.formProduct.controls['thumbnail'].setValue('');
+      this.formProduct.controls['thumbnailFile'].setValue(null);
+      this.file = '';
+  
+      // Đóng modal sau khi thêm mới thành công
+      const closeButton = document.getElementById('closeButton');
+      if (closeButton) {
+        closeButton.click();
+      }
     });
   }
-
+  
   id: any;
   editingIndex: number = -1; // Khởi tạo là -1 khi không ở chế độ chỉnh sửa
   Edit(index: number) {
@@ -141,10 +162,10 @@ export class ProductListComponent implements OnInit {
   // end paginationn
 
  
-  onTableDatTaChange(event: any) {
-    this.page = event;
-   this.ngOnInit();
-  }
+  // onTableDatTaChange(event: any) {
+  //   this.page = event;
+  //  this.ngOnInit();
+  // }
   //  onTableSizeChange(event : any): void{
   //   this.tableSize = event.target.value;
   //   this.page = 1;

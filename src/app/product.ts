@@ -18,6 +18,7 @@ export interface Product {
     discountPercentage: number,
     productCode: string;
     releaseDate: string,
+    isNewlyAdded?: boolean,
     rating: number,
     stock: 94,
     brand: string,

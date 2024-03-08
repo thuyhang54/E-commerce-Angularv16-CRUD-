@@ -43,6 +43,7 @@ export class ProductService {
   AddProduct(frmProduct: any): Observable<Product[]> {
     return this.http.post<Product[]>(`${this.baseURL}`, frmProduct);
   }
+ 
   // EditProduct(id: number) {
   //   return this.products[id];
   // }

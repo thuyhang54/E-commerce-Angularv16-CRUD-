@@ -3,6 +3,7 @@
     {
       "id": "3",
       "title": "Samsung Universe 9",
+      "releaseDate": "2024-03-08",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
       "price": 1249,
       "discountPercentage": 15.46,
@@ -16,19 +17,21 @@
       ]
     },
     {
+      "id": "4",
       "title": "OPPOF19",
       "price": 280,
       "discountPercentage": 17.91,
+      "releaseDate": "2024-03-08",
       "stock": "123",
       "description": "OPPO F19 is officially announced on April 2021.",
       "starRating": 5,
       "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
-      "thumbnailFile": null,
-      "id": "4"
+      "thumbnailFile": null
     },
     {
       "id": "6",
       "title": "MacBook Pro",
+      "releaseDate": "2024-03-08",
       "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
       "price": 1749,
       "discountPercentage": 11.02,
@@ -47,6 +50,7 @@
     {
       "id": "8",
       "title": "Microsoft Surface Laptop 4",
+      "releaseDate": "2024-03-08",
       "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
       "price": 1499,
       "discountPercentage": 10.23,
@@ -66,6 +70,7 @@
     {
       "id": "9",
       "title": "Infinix INBOOK",
+      "releaseDate": "2024-03-08",
       "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
       "price": 1099,
       "discountPercentage": 11.83,
@@ -85,6 +90,7 @@
     {
       "id": "16cb",
       "title": "app",
+      "releaseDate": "2024-03-08",
       "price": 300,
       "discountPercentage": 2,
       "stock": "12",
@@ -94,26 +100,52 @@
       "thumbnailFile": {}
     },
     {
-      "id": "60e4",
-      "title": "erwfre",
-      "price": 0,
+      "id": "b3f2",
+      "title": "dwdfws",
+      "releaseDate": "2024-03-08",
+      "price": 199,
       "discountPercentage": 0,
       "stock": 0,
-      "description": "reef",
+      "description": "",
       "starRating": 5,
+      "thumbnail": "",
+      "thumbnailFile": null
+    },
+    {
+      "id": "6924",
+      "title": null,
+      "releaseDate": "2024-03-09",
+      "price": null,
+      "discountPercentage": null,
+      "stock": null,
+      "description": null,
+      "starRating": null,
       "thumbnail": "./assets/images/xbox-controller.png",
       "thumbnailFile": {}
     },
     {
-      "id": "7318",
-      "title": "fenferf",
-      "price": 230,
-      "discountPercentage": 1,
-      "stock": "40",
-      "description": "dfvdv",
+      "id": "3ec5",
+      "title": "fgfhg",
+      "releaseDate": "2024-03-10",
+      "price": 0,
+      "discountPercentage": 0,
+      "stock": 0,
+      "description": "",
       "starRating": 5,
-      "thumbnail": "./assets/images/rejon-Hammer.png",
+      "thumbnail": "./assets/images/egore911-saw.png",
       "thumbnailFile": {}
+    },
+    {
+      "id": "fa70",
+      "title": "",
+      "releaseDate": "2024-03-11",
+      "price": 0,
+      "discountPercentage": 0,
+      "stock": 0,
+      "description": "",
+      "starRating": 5,
+      "thumbnail": "",
+      "thumbnailFile": null
     }
   ],
   "users": [
