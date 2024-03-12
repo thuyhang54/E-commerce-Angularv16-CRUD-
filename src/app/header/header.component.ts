@@ -5,8 +5,9 @@ import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
 import { Cart } from '../cart';
 import { CategoryService } from '../category.service';
-import { Category, Subcategory } from '../category'; 
+import { Category } from '../category'; 
 import { Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 // import { SearchService } from '../search.service';
 import { AuthService } from '../Auth/auth.service';
 @Component({
@@ -25,15 +26,39 @@ export class HeaderComponent implements OnInit {
   //  Output để truyền danh sách sản phẩm đã lọc (filteredProductList) về component cha (home)
   @Output() filteredProductEvent = new EventEmitter<Product[]>();
 
-  constructor(private router: ActivatedRoute, public productService: ProductService, private cartService: CartService,private categoryService: CategoryService,private authService: AuthService ) {
-    this.cartList = cartService.getCartAll();
-    // this.products = productService.getProduct();
-    this.filteredProductList = this.products;
-  }
-  ngOnInit(): void {
+  
 
-    this.categories = this.categoryService.getCategories();
+
+
+  constructor(private router: Router, public productService: ProductService, private cartService: CartService,private categoryService: CategoryService,private authService: AuthService ) {
+   
+     this.productService.getProduct().subscribe((data) => {
+      this.products = data;
+      // this.productDetail = this.products[0].id;
+      this.filteredProductList = this.products; 
+      
+    });
+    // this.cartList = cartService.getCartAll();
+    // this.products = productService.getProduct();
+    // this.filteredProductList = this.products;
   }
+ 
+  ngOnInit(): void {
+    // this.categoryService.getCategories().subscribe(categories => {
+    //   this.categories = categories;
+    // });
+    // this.productService.getProductId().subscribe((data) => {
+    //   this.productDetail = data;
+    // });
+    this.productService.getProduct().subscribe((data) => {
+      this.products = data;
+      // console.log("product:" ,this.products);
+      
+      this.filteredProductList = this.products; 
+      
+    });
+  }
+  
 
   filterResults(){
     if(!this.searching ){
@@ -44,11 +69,11 @@ export class HeaderComponent implements OnInit {
         list => list?.title!.toLowerCase().includes(this.searching!.toLowerCase())
         );
     }
-    console.log('Filtered Products:', this.filteredProductList);
+    // console.log('Filtered Products:', this.filteredProductList);
     
    // Sau khi lọc, emit sự kiện với danh sách sản phẩm đã lọc
       this.filteredProductEvent.emit(this.filteredProductList);
-      console.log(this.filteredProductEvent);
+      // console.log(this.filteredProductEvent);
       
   }
  

@@ -39,6 +39,7 @@
                   </thead>
                   <tbody>
                     <tr class="text-center" *ngFor="let item of cartList ; let i=index">
+                      
                         <td>  <img width="80"src="{{item.ImageUrl}}" alt="" /></td>
                       <td class="">
                         <div class="product-info">
@@ -47,15 +48,24 @@
                         </div>
                       </td>
                       <!-- <td>{{item.Size}} - {{item.Color}}</td> -->
-                      <td class="">{{item.Price|currency}}</td>
+                      <td>{{ item.Price | currency:'':'' }}0 VND</td>
                       <td class="">
                         <div class="quantity" style="display: inline-flex;">
-                          <button class="btn btn-secondary" (click)="decreaseQuantity(i)">-</button>
-                          <input class="form-control" type="number" [(ngModel)]="cartList[i].Quantity" (ngModelChange)="checkQuantity(i)" />
-                          <button class="btn btn-secondary" (click)="increaseQuantity(i)">+</button>
+                          <div class="quantity" style="display: inline-flex;">
+                            <button class="btn btn-secondary" (click)="decreaseQuantity(i)" [disabled]="cartList[i].Quantity! <= 1">-</button>
+                            
+                            <input class="form-control" type="number" [(ngModel)]="cartList[i].Quantity" (ngModelChange)="checkQuantity(i)" [disabled]="cartList[i].Quantity! >= cartList[i].inStock!" />
+                            
+                            <button class="btn btn-secondary" (click)="increaseQuantity(i)" [disabled]="this.cartList[i].inStock! > 0 && cartList[i].Quantity! >= cartList[i].inStock!">+</button>
+                          
+                           
+                          </div>
+                          
+                          
+                          
                         </div>
                       </td>
-                      <td class="">{{item.Price!*item.Quantity!|currency}}</td>
+                      <td class="">{{item.Price!*item.Quantity!|currency: '':''}}0 VND</td>
                       <td class="">
                         <button class="btn btn-danger" (click)="Remove(i)">Remove</button>
                       </td>
@@ -65,14 +75,14 @@
                         </th>
                         <th>Sum :</th>
                         <th class="text-center">{{ItemCount()}}</th>
-                        <th class="text-center">{{ ItemSum() |currency}}</th>
+                        <th class="text-center">{{ ItemSum() |currency: '':''}}0 VND</th>
                         <th>
                             <button class="btn btn-danger" (click)="DeleteAll()">Delete All</button>
                         </th>
                     </tr>
                   </tbody>
                 </table>
-                <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
+                <!-- <a href="checkout.html" class="btn btn-main pull-right">Checkout</a> -->
               <!-- </form> -->
             </div>
           </div>

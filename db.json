@@ -1,151 +1,161 @@
 {
   "products": [
     {
-      "id": "3",
-      "title": "Samsung Universe 9",
-      "releaseDate": "2024-03-08",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
+      "title": "Điện thoại iPhone 15 Pro Max 256GB",
+      "releaseDate": "2024-02-23",
+      "price": 25499,
+      "discountPercentage": 12.96,
+      "stock": "100",
+      "description": "An apple mobile which is nothing like appleddfdff",
+      "starRating": null,
+      "thumbnail": "./assets/images/iphone-15-pro-max-blue-1-1.jpg",
+      "thumbnailFile": null,
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "title": "Điện thoại Samsung Galaxy S24+ 5G 256GB ",
+      "releaseDate": "2024-02-24",
+      "description": "Samsung đã cho ra mắt Samsung Galaxy S24+ 5G 256GB, chiếc điện thoại đẳng cấp của họ tại sự kiện hàng năm diễn ra vào ngày 18/01 tại Mỹ. Điểm độc đáo của sản phẩm nằm ở chip mới của Samsung, đi kèm với sự phát triển trong việc bổ sung nhiều tính năng thông minh có tích hợp AI và tăng cường khả năng chụp ảnh ở phần camera.",
+      "price": 13000,
+      "discountPercentage": 17.94,
+      "rating": 3.44,
+      "stock": 34,
+      "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+      "thumbnail": "./assets/images/samsung-galaxy-s24-plus-tim-1.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+        "./assets/images/samsung-galaxy-s24-plus-tim-1.jpg",
+        "./assets/images/samsung-galaxy-s24-plus-tim-2.jpg",
+        "./assets/images/samsung-galaxy-s24-plus-tim-3.jpg",
+        "./assets/images/samsung-galaxy-s24-plus-tim-4.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Điện thoại OPPO Reno11 5G",
+      "releaseDate": "2024-02-26",
+      "description": "OPPO Reno11 5G tiếp tục mang đến sự hấp dẫn cho người dùng, lấy cảm hứng từ những thành công trước đó. Điểm độc đáo của chiếc điện thoại nằm ở thiết kế thu hút, cấu hình mạnh mẽ và khả năng chụp ảnh ấn tượng. Được tạo ra để đáp ứng một loạt các nhu cầu từ giải trí, nhiếp ảnh đến công việc đòi hỏi hiệu năng cao.",
+      "price": 2800,
+      "discountPercentage": 17.91,
+      "rating": 4.3,
+      "stock": 123,
+      "brand": "OPPO",
+      "category": "smartphones",
+      "thumbnail": "./assets/images/oppo-reno-11-xanh-1-1.jpg",
+      "images": [
+        "./assets/images/oppo-reno-11-xanh-1-1.jpg",
+        "./assets/images/oppo-reno-11-xanh-2-1.jpg",
+        "./assets/images/oppo-reno-11-xanh-3-1.jpg",
+        "./assets/images/oppo-reno-11-xanh-4.jpg"
       ]
     },
     {
       "id": "4",
-      "title": "OPPOF19",
-      "price": 280,
-      "discountPercentage": 17.91,
-      "releaseDate": "2024-03-08",
-      "stock": "123",
-      "description": "OPPO F19 is officially announced on April 2021.",
-      "starRating": 5,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
-      "thumbnailFile": null
+      "title": "Điện thoại vivo V29e 5G 12GB ",
+      "releaseDate": "2024-02-27",
+      "description": "vivo V29e 5G là một phiên bản điện thoại di động đáng chú ý trong phân khúc tầm trung, đặc biệt với sự kết hợp tinh tế giữa thiết kế và hiệu suất. Điều làm nổi bật chiếc điện thoại này chính là camera chất lượng, thiết kế sang trọng và viên pin lớn kèm sạc nhanh. ",
+      "price": 4990,
+      "discountPercentage": 10.58,
+      "rating": 2.09,
+      "stock": 32,
+      "brand": "Huawei",
+      "category": "smartphones",
+      "thumbnail": "./assets/images/vivo-v29e-den-glr-1.jpg",
+      "images": [
+        "./assets/images/vivo-v29e-den-glr-1.jpg",
+        "./assets/images/vivo-v29e-den-glr-2.jpg",
+        "./assets/images/vivo-v29e-den-glr-3.jpg",
+        "./assets/images/vivo-v29e-den-glr-4.jpg"
+      ]
     },
     {
-      "id": "6",
-      "title": "MacBook Pro",
-      "releaseDate": "2024-03-08",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
+      "id": "5",
+      "title": "Laptop Apple MacBook Air 13 inch M2 2022 ",
+      "releaseDate": "2024-02-28",
+      "description": "Với sức mạnh bùng nổ đến từ bộ vi xử lý M2 cùng thiết kế của một chiếc laptop cao cấp - sang trọng, MacBook Air M2 đáp ứng đầy đủ mọi nhu cầu từ học tập, văn phòng đến đồ họa, kỹ thuật nâng cao.Nâng tầm mọi trải nghiệm nhờ sức mạnh bùng nổ đến từ bộ vi xử lý M2",
+      "price": 17490,
       "discountPercentage": 11.02,
       "rating": 4.57,
       "stock": 83,
       "brand": "Apple",
       "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+      "thumbnail": "./assets/images/apple-macbook-air-m2-2022-16gb-256gb-1-2.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/6/1.png",
-        "https://cdn.dummyjson.com/product-images/6/2.jpg",
-        "https://cdn.dummyjson.com/product-images/6/3.png",
-        "https://cdn.dummyjson.com/product-images/6/4.jpg"
+        "./assets/images/apple-macbook-air-m2-2022-16gb-256gb-1-2.jpg",
+        "./assets/images/apple-macbook-air-m2-2022-16gb-256gb-2-2.jpg",
+        "./assets/images/apple-macbook-air-m2-2022-16gb-256gb-3-2.jpg",
+        "./assets/images/apple-macbook-air-m2-2022-16gb-256gb-4-2.jpg"
       ]
     },
     {
-      "id": "8",
-      "title": "Microsoft Surface Laptop 4",
-      "releaseDate": "2024-03-08",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
+      "id": "6",
+      "title": "Laptop Asus Vivobook Go 15 E1504FA R5",
+      "releaseDate": "2024-02-29",
+      "description": "Laptop Asus Vivobook Go 15 E1504FA R5 7520U (NJ776W) mang phong cách thiết kế sang trọng, hiệu năng mạnh mẽ cùng tính đa năng sử dụng, chắc chắn sẽ giúp bạn đáp ứng mọi tác vụ công việc và học tập hàng ngày một cách hiệu quả và chuyên nghiệp nhất.Thiết kế quen thuộc, kiểu cách sang trọng ",
+      "price": 14990,
+      "discountPercentage": 4.15,
+      "rating": 4.25,
+      "stock": 50,
+      "brand": "Samsung",
+      "category": "laptops",
+      "thumbnail": "./assets/images/asus-vivobook-go-15-e1504fa-r5-nj776w-glr-1.jpg",
+      "images": [
+        "./assets/images/asus-vivobook-go-15-e1504fa-r5-nj776w-glr-1.jpg",
+        "./assets/images/asus-vivobook-go-15-e1504fa-r5-nj776w-glr-2.jpg",
+        "./assets/images/asus-vivobook-go-15-e1504fa-r5-nj776w-glr-3.jpg",
+        "./assets/images/asus-vivobook-go-15-e1504fa-r5-nj776w-glr-4.jpg"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Laptop Asus TUF Gaming F15 FX507ZC4 i5 12500H",
+      "releaseDate": "2024-03-01",
+      "description": "Laptop Asus TUF Gaming F15 FX507ZC4 i5 12500H (HN229W) với cấu trúc mạnh mẽ, hiệu năng vượt trội cùng mức giá hoàn toàn ưu đãi tại Thế Giới Di Động. Đây chính xác là mẫu laptop gaming được thiết kế dành riêng cho những anh em đam mê thể thao điện tử, đáp ứng đầy đủ đến cả những công việc thiết kế, sáng tạo.",
+      "price": 18990,
       "discountPercentage": 10.23,
       "rating": 4.43,
       "stock": 68,
       "brand": "Microsoft Surface",
       "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+      "thumbnail": "./assets/images/asus-tuf-gaming-a15-fa507nu-r5-lp105w-1.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/8/1.jpg",
-        "https://cdn.dummyjson.com/product-images/8/2.jpg",
-        "https://cdn.dummyjson.com/product-images/8/3.jpg",
-        "https://cdn.dummyjson.com/product-images/8/4.jpg",
-        "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+        "./assets/images/asus-tuf-gaming-a15-fa507nu-r5-lp105w-1.jpg",
+        "./assets/images/asus-tuf-gaming-a15-fa507nu-r5-lp105w-2.jpg",
+        "./assets/images/asus-tuf-gaming-a15-fa507nu-r5-lp105w-3.jpg",
+        "./assets/images/asus-tuf-gaming-a15-fa507nu-r5-lp105w-4.jpg"
       ]
     },
     {
-      "id": "9",
-      "title": "Infinix INBOOK",
-      "releaseDate": "2024-03-08",
-      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-      "price": 1099,
+      "id": "8",
+      "title": "Laptop Dell Vostro 15 3520 i5 1235U/8GB ",
+      "releaseDate": "2024-03-02",
+      "description": "Bạn đang muốn tìm kiếm một mẫu laptop học tập - văn phòng mang hiệu năng ổn định, thiết kế tinh gọn, hiện đại lại còn sở hữu một mức giá phù hợp kinh tế thì hãy tham khảo ngay laptop Dell Vostro 15 3520 i5 1235U (V5I5610W1) từ thương hiệu Dell nổi tiếng, đáp ứng cho bạn đầy đủ các nhu cầu từ làm việc đến giải trí đa phương tiện.",
+      "price": 10990,
       "discountPercentage": 11.83,
       "rating": 4.54,
       "stock": 96,
       "brand": "Infinix",
       "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+      "thumbnail": "./assets/images/dell-vostro-15-3520-i5-v5i5610w1-1.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/9/1.jpg",
-        "https://cdn.dummyjson.com/product-images/9/2.png",
-        "https://cdn.dummyjson.com/product-images/9/3.png",
-        "https://cdn.dummyjson.com/product-images/9/4.jpg",
-        "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+        "./assets/images/dell-vostro-15-3520-i5-v5i5610w1-1.jpg",
+        "./assets/images/dell-vostro-15-3520-i5-v5i5610w1-2.jpg",
+        "./assets/images/dell-vostro-15-3520-i5-v5i5610w1-3.jpg",
+        "./assets/images/dell-vostro-15-3520-i5-v5i5610w1-4.jpg"
       ]
     },
     {
-      "id": "16cb",
-      "title": "app",
-      "releaseDate": "2024-03-08",
-      "price": 300,
-      "discountPercentage": 2,
-      "stock": "12",
-      "description": "efwes",
-      "starRating": 5,
-      "thumbnail": "./assets/images/Leaf-Rake.png",
-      "thumbnailFile": {}
-    },
-    {
-      "id": "b3f2",
-      "title": "dwdfws",
-      "releaseDate": "2024-03-08",
-      "price": 199,
-      "discountPercentage": 0,
-      "stock": 0,
-      "description": "",
-      "starRating": 5,
-      "thumbnail": "",
-      "thumbnailFile": null
-    },
-    {
-      "id": "6924",
-      "title": null,
-      "releaseDate": "2024-03-09",
-      "price": null,
-      "discountPercentage": null,
-      "stock": null,
-      "description": null,
-      "starRating": null,
-      "thumbnail": "./assets/images/xbox-controller.png",
-      "thumbnailFile": {}
-    },
-    {
-      "id": "3ec5",
-      "title": "fgfhg",
-      "releaseDate": "2024-03-10",
-      "price": 0,
-      "discountPercentage": 0,
-      "stock": 0,
-      "description": "",
-      "starRating": 5,
-      "thumbnail": "./assets/images/egore911-saw.png",
-      "thumbnailFile": {}
-    },
-    {
-      "id": "fa70",
-      "title": "",
-      "releaseDate": "2024-03-11",
-      "price": 0,
-      "discountPercentage": 0,
-      "stock": 0,
-      "description": "",
-      "starRating": 5,
-      "thumbnail": "",
-      "thumbnailFile": null
+      "title": "Laptop HP Pavilion 14 dv2073TU i5 ",
+      "releaseDate": "",
+      "price": 12999,
+      "discountPercentage": 6.1,
+      "stock": 89,
+      "description": "Laptop HP Pavilion 14 dv2073TU i5 1235U (7C0P2PA) vừa có mặt tại Thế Giới Di Động sẽ khiến bạn thực sự ấn tượng với vẻ ngoài vô cùng trẻ trung, sở hữu thông số cấu hình mạnh mẽ cho bất cứ nhu cầu sử dụng cá nhân nào. Đây chính xác là một mẫu laptop học tập - văn phòng dành cho mọi nhà.",
+      "rating": 5,
+      "thumbnail": "./assets/images/hp-pavilion-14-dv2073tu-i5-7c0p2pa-1-1.jpg",
+      "thumbnailFile": null,
+      "id": "9"
     }
   ],
   "users": [
@@ -189,6 +199,12 @@
       "email": "thuyhang8563@gmail.com",
       "password": "123#we",
       "comfirm_password": "123#we"
+    },
+    {
+      "id": "f48d",
+      "email": "fgjokg@gmail.com",
+      "password": "34erdw",
+      "comfirm_password": "34erdw"
     }
   ]
 }

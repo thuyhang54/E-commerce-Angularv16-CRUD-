@@ -13,9 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ShirtComponent } from './shirt/shirt.component';
-import { PantsComponent } from './pants/pants.component';
-import { DressComponent } from './dress/dress.component';
+
 
 import { ProductListComponent } from './product-list/product-list.component';
 import { StarComponent } from './product-list/star/star.component';
@@ -27,6 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 //
 import { HttpClientModule} from '@angular/common/http';
 import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
+import { LaptopListComponent } from './laptop-list/laptop-list.component';
+import { SmartPhonesComponent } from './smart-phones/smart-phones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,14 +36,14 @@ import { StarRatingComponent } from './product-details/star-rating/star-rating.c
     ProductDetailsComponent,
     ProductsComponent,
     CartComponent,
-    ShirtComponent,
-    PantsComponent,
-    DressComponent,
+  
     ProductListComponent,
     StarComponent,
     LoginComponent,
     RegisterComponent,
     StarRatingComponent,
+    LaptopListComponent,
+    SmartPhonesComponent,
    
  
   ],

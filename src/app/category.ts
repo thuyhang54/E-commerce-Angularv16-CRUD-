@@ -1,11 +1,11 @@
 export interface Category {
-    categoryId: number;
+    // categoryId: number;
     name: string;
-    subcategories?: Subcategory[];
+    // subcategories?: Subcategory[];
   }
   
-  export interface Subcategory {
-    subcategoryId: number;
-    name: string;
-  }
+  // export interface Subcategory {
+  //   // subcategoryId: number;
+  //   name: string;
+  // }
   

@@ -31,7 +31,7 @@
 				<!-- Cart -->
 				<ul class="top-menu text-right list-inline">
 					<li class="dropdown cart-nav dropdown-slide">
-						<a href="#!" class="" data-toggle="modal" data-target="#modelId"><i class="tf-ion-android-cart"></i>Cart <span class="badge badge-light">{{
+						<a href="#!" [routerLink]="['/cart']" class="" data-toggle="modal" data-target="#modelId"><i class="tf-ion-android-cart"></i>Cart <span class="badge badge-light">{{
 								ItemCount()}}</span></a>
 						<div class="dropdown-menu cart-dropdown">
 							<!-- Cart Item -->
@@ -69,12 +69,16 @@
 
 							<div class="cart-summary">
 								<span>Total</span>
-								<span class="total-price">{{ ItemSum() |currency}}</span>
+								<span class="total-price">{{ ItemSum() |currency : '':''}}0 VND</span>
 							</div>
 							<ul class="text-center cart-buttons">
-								<li><a href="#" [routerLink]="['/cart/',productDetail?.id]"
-										class="btn btn-small">View Cart</a></li>
-								<li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
+								<li>
+									<a href="#" [routerLink]="['/cart']"
+										class="btn btn-small">View Cart</a>
+									</li>
+								<li>
+									<a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a>
+								</li>
 							</ul>
 						</div>
 
@@ -93,11 +97,6 @@
 							</li>
 						</ul>
 					</li>
-					<!-- Hiển thị sản phẩm đã lọc -->
-					<!-- <div *ngFor="let product of filteredProductList"> -->
-						<!-- Hiển thị thông tin sản phẩm -->
-						<!-- <p>{{ product.productName }}</p>
-					  </div> -->
 					
 					<!-- / Search -->
 
@@ -139,14 +138,22 @@
 			<!-- Navbar Links -->
 			<div id="navbar" class="navbar-collapse collapse text-center">
 				<ul class="nav navbar-nav">
-
+					<!-- <li class="" *ngFor="let item of categories" >
+						<a href="#" (click)="navigateToCategory(item)" >{{item}}</a>
+				</li> -->
 					<!-- Home -->
 					<li class="dropdown">
 						<a href="#" routerLink="/">Home</a>
-					</li><!-- / Home -->
-
+					</li>
+					<!-- / Home -->
+					<li class="dropdown">
+						<a href="#" routerLink="/smartphones">SmartPhones</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" routerLink="/laptops">Laptops</a>
+					</li>
 					<!-- Shop -->
-					<ul class="nav navbar-nav">
+					<!-- <ul class="nav navbar-nav">
 						<li class="dropdown dropdown-slide" *ngFor="let category of categories">
 							<ng-container *ngIf="category.categoryId === 2">
 								<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
@@ -160,11 +167,12 @@
 								</ul>
 							</ng-container>
 						</li>
-					</ul>
+					</ul> -->
 					<!-- Dashboard -->
 					<li class="dropdown">
 						<a href="#" routerLink="/list">Dashboard</a>
-					</li><!-- / Home -->
+					</li>
+					<!-- / Home -->
 
 				</ul><!-- / .nav .navbar-nav -->
 

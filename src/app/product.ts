@@ -11,14 +11,16 @@ export interface Product {
     // description: string;
     // starRating: number;
     // imageUrl: string;
-    id:number,
+    id: any,
     title: string,
+     productCategory: number;
+     categoty: string,
     description: string,
     price:number,
     discountPercentage: number,
     productCode: string;
     releaseDate: string,
-    isNewlyAdded?: boolean,
+    showBackground?: false
     rating: number,
     stock: 94,
     brand: string,

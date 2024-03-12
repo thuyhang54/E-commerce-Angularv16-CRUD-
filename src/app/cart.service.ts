@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductService } from './product.service';
 import { Cart } from './cart';
+import { Product } from './product';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +22,7 @@ export class CartService {
     let isItemInCart = itemInCart.length > 0;
 
     if (!isItemInCart) {
-      let id =
-        this.cartList.push({
+      let id = this.cartList.push({
           "Id": frmProducts.id,
           "Name": frmProducts.title,
           "Code": frmProducts.productCode,
@@ -32,7 +32,7 @@ export class CartService {
           "inStock": frmProducts.stock ,
           "Quantity": 0,
         }) - 1;
-
+      
       this.cartList[id].Quantity = this.cartList[id].Quantity! + Number(quantity);
       this.cartList[id].inStock = this.cartList[id].inStock! -  Number(quantity);
       console.log(this.cartList);
@@ -46,6 +46,16 @@ export class CartService {
     }
   }
   
+  updateCartQuantities(cartList: Cart[], productDetail: Product[]): void {
+    cartList.forEach(cartItem => {
+      const product = productDetail.find((p : any) => p.id === cartItem.Id);
+      if (product) {
+        if (cartItem.Quantity! > product.stock) {
+          cartItem.Quantity = product.stock;
+        }
+      }
+    });
+  }
   
   totalItems() {
     let sum = 0;

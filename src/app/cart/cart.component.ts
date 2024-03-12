@@ -15,23 +15,25 @@ export class CartComponent {
   productDetail: Product | undefined;
   cartList: Cart[] = [];
   InStock: number = 0;
-  selectedSize: any | null = null;
-  selectedColor: any | null = null;
   quantity: number = 1;
   constructor(
     private router: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
+  
   ) {
     this.cartList = cartService.getCartAll();
   }
+
   ngOnInit(): void {
     let id = Number(this.router.snapshot.params['id']);
- this.productService.getProductId(id).subscribe(data=>{
+    this.productService.getProductId(id).subscribe(data=>{
   this.productDetail = data;
+   this.InStock = this.productDetail?.stock!;
+  
     })
-    this.InStock = this.productDetail?.stock!;
   }
   // Add() {
   //   if (this.selectedSize && this.selectedColor && this.quantity) {
@@ -44,6 +46,7 @@ export class CartComponent {
   Add() {
     this.cartService.addCart(this.productDetail?.id!, this.productDetail, this.quantity);
     this.InStock = this.cartService.getInStock(this.productDetail?.id!)!;
+    
   }
 
   ItemCount() {
@@ -52,19 +55,27 @@ export class CartComponent {
   ItemSum() {
     return this.cartService.Total();
   }
+  updateQuantities(): void {
+    this.cartService.updateCartQuantities(this.cartList, this.productDetail?.id!);
+  }
   increaseQuantity(index: number) {
     // Tăng giảm giá trị số lượng
     this.cartList[index].Quantity!++;
-
+  
     // Kiểm tra xem số lượng có vượt quá tồn kho không
-    if (this.cartList[index].Quantity! >= this.cartList[index].inStock!) {
+    this.checkStockLimit(index);
+  }
+  
+  checkStockLimit(index: number) {
+    if (this.cartList[index].Quantity! > this.cartList[index].inStock!) {
       alert(`Only ${this.cartList[index].inStock!} products left`);
       this.cartList[index].Quantity = this.cartList[index].inStock!;
     }
   }
+  
 
-  checkQuantity(index: any) {
-    if (this.cartList[index].Quantity! >= this.cartList[index].inStock!) {
+  checkQuantity(index: number) {
+    if (this.cartList[index].Quantity! > this.cartList[index].inStock!) {
       alert(`Only ${this.cartList[index].inStock!} products left`);
       this.cartList[index].Quantity = this.cartList[index].inStock!;
     }
@@ -76,6 +87,7 @@ export class CartComponent {
       this.cartList[index].Quantity!--;
     }
   }
+  
 
   Remove(index: number) {
     this.cartService.RemoveCart(index);

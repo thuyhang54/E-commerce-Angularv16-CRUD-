@@ -10,7 +10,7 @@
             <form class="text-left clearfix" (ngSubmit)="onSubmit()" #myForm="ngForm">
               <div class="form-group">
                 <input type="email" class="form-control"  placeholder="Enter your email"
-                [(ngModel)]="loginForm.email" name="email" #email = "ngModel" required
+                [(ngModel)]="loginForm.email" naDFme="email" #email = "ngModel" required
                 >
                 <small *ngIf="email.invalid && (email.touched || email.dirty)" class="text-danger">Please enter a valid Email.</small>
               </div>

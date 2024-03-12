@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +11,8 @@ export class ProductService {
     this.getProduct().subscribe((res) =>{
       this.products = res;
     })
+   
+    
    }
   products: Product[] =[
  
@@ -35,10 +37,10 @@ export class ProductService {
     searchId(id:number){
       return this.products.find(item=> item.id === id)
     }
-  // getProductByIdCategory(iddm :number) : any{
-  //   const listProdcuts=this.products.filter((p) => p.productCategory === iddm );
-  //   return listProdcuts ;
-  // }
+    getProductsByCategory(category: string): Observable<any[]> {
+      const filteredProducts = this.products.filter(product => product.category === category);
+      return of(filteredProducts);
+    }
  
   AddProduct(frmProduct: any): Observable<Product[]> {
     return this.http.post<Product[]>(`${this.baseURL}`, frmProduct);
@@ -52,5 +54,7 @@ export class ProductService {
   }
   DeleteProduct(id: number): Observable<Product[]>  {
     return this.http.delete<Product[]>(`${this.baseURL}/${id}`);
+    
   }
+  
 }
